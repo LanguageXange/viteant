@@ -3,6 +3,7 @@ import {
   ShopOutlined,
   ShoppingCartOutlined,
   UserOutlined,
+  SmileOutlined
 } from "@ant-design/icons";
 import { Menu } from "antd";
 import { useEffect, useState } from "react";
@@ -10,7 +11,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 function SideMenu({ theme }) {
   const location = useLocation();
-
   const [selectedKeys, setSelectedKeys] = useState<string>("/");
 
   useEffect(() => {
@@ -25,7 +25,6 @@ function SideMenu({ theme }) {
        style={{ height: "100dvh", textAlign:"center",padding:"5px" }}
         mode="vertical"
         onClick={(item) => {
-          //item.key
           // console.log(item)
           navigate(item.key);
         }}
@@ -47,10 +46,16 @@ function SideMenu({ theme }) {
             key: "/orders",
             icon: <ShoppingCartOutlined />,
           },
+       
           {
-            label: "Settings",
+            label: "Users",
             key: "/customers",
             icon: <UserOutlined />,
+          },
+          {
+            label: "Dummy",
+            key: "/dummy",
+            icon: <SmileOutlined />,
           },
         ]}
       ></Menu>

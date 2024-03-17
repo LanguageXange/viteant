@@ -27,7 +27,7 @@ const languageMap = {
 
   const options = Object.keys(languageMap).map((lan) => ({
     value: lan,
-    label: lan
+    label: lan,
   }));
 
 const TestApp: React.FC = () => {

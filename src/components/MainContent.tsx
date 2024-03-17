@@ -1,7 +1,10 @@
-const MainContent = () => {
+import React from "react";
+import AppRoutes from "../pages/AppRoutes";
+
+const MainContent: React.FC = () => {
   return (
     <div>
-      To do - charts and graphs make the layout responsive, toggle global theme
+      <AppRoutes />
     </div>
   );
 };

@@ -2,6 +2,7 @@
 `pnpm add antd`
 `pnpm add react-router-dom`
 `pnpm add @ant-design/icons`
+`pnpm add chart.js react-chartjs-2`
 
 # Links
 https://www.youtube.com/watch?v=xvBUgdKUz5g

@@ -1,15 +1,22 @@
 import SideMenu from "./components/SideBar";
 import MainContent from "./components/MainContent";
 import React, { useState } from "react";
-import { Layout, Flex, Switch, ConfigProvider, theme, Space, Divider } from "antd";
+import {
+  Layout,
+  Flex,
+  Switch,
+  ConfigProvider,
+  theme,
+} from "antd";
 
 const { Header, Footer, Sider, Content } = Layout;
 
 import "./App.css";
 const headerStyle: React.CSSProperties = {
   textAlign: "center",
-  display:"flex",
+  display: "flex",
   maxHeight: 64,
+  background: "#888",
 };
 
 const contentStyle: React.CSSProperties = {
@@ -21,6 +28,7 @@ const contentStyle: React.CSSProperties = {
 const footerStyle: React.CSSProperties = {
   textAlign: "center",
   padding: "10px",
+  borderTop: "1px solid #666",
 };
 
 const layoutStyle = {
@@ -51,11 +59,25 @@ const App: React.FC = () => {
           </Sider>
           <Layout>
             <Header style={headerStyle}>
-    
-              <Switch onChange={handleChange} /> Toggle Config Theme
-              <Switch onChange={changeTheme} /> Toggle Menu Theme
-         
-             
+              <Flex gap={"middle"}>
+                <div>
+                  <Switch
+                    onChange={handleChange}
+                    className="switch"
+                    size="small"
+                  />
+                  Toggle Config Theme
+                </div>
+
+                <div>
+                  <Switch
+                    onChange={changeTheme}
+                    className="switch"
+                    size="small"
+                  />{" "}
+                  Toggle Menu Theme
+                </div>
+              </Flex>
             </Header>
             <Content style={contentStyle}>
               {" "}
