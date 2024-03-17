@@ -35,10 +35,11 @@ const cols: TableProps<DataType>["columns"] = [
 
     render: (g) => (g === "male" ? "M" : "F"),
   },
-  { title: "Date of Birth", dataIndex: "birthDate" },
-  { title: "Age", dataIndex: "age" },
   { title: "Height", dataIndex: "height" },
-  { title: "Eye Color", dataIndex: "eyeColor" },
+  { title: "Date of Birth", dataIndex: "birthDate", responsive:['lg'] },
+  { title: "Age", dataIndex: "age", responsive:['lg']  },
+
+  { title: "Eye Color", dataIndex: "eyeColor", responsive:['lg']  },
 ];
 
 function Customers() {

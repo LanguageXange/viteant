@@ -7,7 +7,7 @@ import {
 import { Card, Space, Statistic, Table, Typography, Flex } from "antd";
 import { ReactNode, useEffect, useState } from "react";
 import { getCustomers, getInventory, getOrders, getRevenue } from "../api";
-
+// https://react-chartjs-2.js.org/
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -115,7 +115,7 @@ function Dashboard() {
           value={revenue}
         />
       </Space>
-      <Space>
+      <Space className="dashboard-charts">
         <RecentOrders />
         <DashboardChart />
       </Space>
@@ -164,14 +164,17 @@ function RecentOrders() {
           {
             title: "Title",
             dataIndex: "title",
+         
           },
           {
             title: "Quantity",
             dataIndex: "quantity",
+      
           },
           {
             title: "Price",
             dataIndex: "price",
+       
           },
         ]}
         loading={loading}
@@ -202,7 +205,8 @@ function DashboardChart() {
   useEffect(() => {
     getRevenue().then((res) => {
       const labels = res.carts.map((cart: Cart) => {
-        return `User-${cart.userId}`;
+        console.log(cart);
+        return `#${cart.userId}`;
       });
       const data = res.carts.map((cart: Cart) => {
         return cart.total;
@@ -215,6 +219,8 @@ function DashboardChart() {
             label: "Revenue",
             data: data,
             backgroundColor: "#4c0ffb",
+            hoverBackgroundColor: "#f5c77e",
+            barThickness: 5,
           },
         ],
       };
@@ -223,30 +229,29 @@ function DashboardChart() {
     });
   }, []);
 
-  // TO DO fix the chart
   const options = {
-    responsive: true,
-    // layout: {
-    //   padding: 4,
-    // },
+    layout: {
+      padding: 2,
+    },
 
     plugins: {
       legend: {
-        position: "bottom",
+        display: false,
+       // position: "top",
       },
 
       title: {
         display: true,
         text: "Order Revenue",
         font: {
-          size: 20,
+          size: 18,
         },
       },
     },
   };
 
   return (
-    <Card style={{ width: "600px", height: "300px" }}>
+    <Card className="chart-card">
       <Bar options={options} data={reveneuData} />
     </Card>
   );

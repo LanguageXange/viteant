@@ -1,9 +1,24 @@
-
 body {
   margin: 0;
   padding: 0;
 }
 
-.switch{
-  background:lightblue;
+.switch {
+  background: lightblue;
+  margin-right:5px;
+}
+
+.chart-card {
+  width: 600px;
+
+  @media only screen and (max-width: 600px) {
+    width: 400px;
+  }
+}
+
+/* https://ant.design/components/layout#layoutsider */
+.dashboard-charts {
+  @media only screen and (max-width: 992px) {
+    flex-direction: column;
+  }
 }

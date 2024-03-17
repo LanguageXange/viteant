@@ -1,13 +1,7 @@
 import SideMenu from "./components/SideBar";
 import MainContent from "./components/MainContent";
 import React, { useState } from "react";
-import {
-  Layout,
-  Flex,
-  Switch,
-  ConfigProvider,
-  theme,
-} from "antd";
+import { Layout, Flex, Switch, ConfigProvider, theme, Typography } from "antd";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -16,13 +10,13 @@ const headerStyle: React.CSSProperties = {
   textAlign: "center",
   display: "flex",
   maxHeight: 64,
-  background: "#888",
 };
 
 const contentStyle: React.CSSProperties = {
   textAlign: "center",
-  minHeight: 120,
-  lineHeight: "120px",
+  lineHeight: "60px",
+  padding: "20px",
+  overflow: "auto",
 };
 
 const footerStyle: React.CSSProperties = {
@@ -32,7 +26,6 @@ const footerStyle: React.CSSProperties = {
 };
 
 const layoutStyle = {
-  overflow: "hidden",
   height: "100dvh",
 };
 
@@ -46,15 +39,25 @@ const App: React.FC = () => {
   const handleChange = () => {
     setIsDarkMode((prev) => !prev);
   };
+  // https://ant.design/components/layout#design-token
+  // https://github.com/ant-design/ant-design/issues/39495
   return (
     <ConfigProvider
       theme={{
         algorithm: isDarkMode ? darkAlgorithm : defaultAlgorithm,
+        components: {
+          // Typography: {
+          //   colorText: "#dcdcdc",
+          // },
+          Layout: {
+            headerBg: "transparent",
+          },
+        },
       }}
     >
       <Flex gap="middle">
         <Layout style={layoutStyle}>
-          <Sider width="20%">
+          <Sider width="15%" breakpoint="lg">
             <SideMenu theme={menuTheme} />
           </Sider>
           <Layout>
@@ -66,7 +69,8 @@ const App: React.FC = () => {
                     className="switch"
                     size="small"
                   />
-                  Toggle Config Theme
+
+                  <Typography.Text>Toggle Theme</Typography.Text>
                 </div>
 
                 <div>
@@ -74,8 +78,8 @@ const App: React.FC = () => {
                     onChange={changeTheme}
                     className="switch"
                     size="small"
-                  />{" "}
-                  Toggle Menu Theme
+                  />
+                  <Typography.Text>Toggle Menu Theme</Typography.Text>
                 </div>
               </Flex>
             </Header>
